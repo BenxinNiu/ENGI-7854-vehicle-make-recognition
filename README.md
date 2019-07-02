@@ -1,11 +1,14 @@
 # ENGI-7854-vehicle-make-recognition
 
+## TODO list
+implement logo extractor
+
 ## Dev Setup
 run `pipenv install`
 
 ## Running code
 
-run `pipenv run python main.py` or create virtual env `pipenv shell`
+run `pipenv run python main.py` or create virtual env `pipenv shell` then `python main.py`
 
 
 # Disclaimer:
