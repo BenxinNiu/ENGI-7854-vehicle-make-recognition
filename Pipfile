@@ -8,13 +8,10 @@ name = "ENGI-7854 Term project"
 url = "https://github.com/BenxinNiu/ENGI-7854-vehicle-make-recognition.git"
 verify_ssl = true
 
-[dev-packages]
-pytest = {version="*"}
-
 [packages]
 numpy = "*"
 matplotlib = "*"
-opencv-python = "*"
+opencv-python  "*"
 
 [requires]
 python_version = "3.7"
