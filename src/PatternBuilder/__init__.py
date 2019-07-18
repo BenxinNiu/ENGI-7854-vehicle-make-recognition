@@ -4,7 +4,6 @@ import numpy as np
 import cv2
 import os
 import src.LocalBinaryPatternUtil as Util
-from src.LocalBinaryPatternUtil.Params import Params
 from src.PatternBuilder.InterimResult import InterimResult
 
 
