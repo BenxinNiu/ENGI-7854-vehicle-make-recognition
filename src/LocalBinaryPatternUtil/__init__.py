@@ -18,8 +18,8 @@ def preprocess(img):
     return img
 
 
-def computeLBPHistogram(sourceImgPath, params):
-    resizedImg = cv2.resize(cv2.imread(sourceImgPath), (48, 48))
+def computeLBPHistogram(sourceImg, params):
+    resizedImg = cv2.resize(sourceImg, (48, 48))
     localBinaryPattern = CircularLBP(resizedImg, params.radius, params.connectivity)
     histogram = LBPH(localBinaryPattern, int(math.pow(2, params.connectivity)), params.range_x, params.range_y)
     return histogram, localBinaryPattern
@@ -53,7 +53,6 @@ def CircularLBP(img, radius=1, neighbors=8):
         # iterate each pixels
         for i in range(radius, rows - radius):
             for j in range(radius, cols - radius):
-                # 获取中心像素点灰度值
                 center = src.item(i, j)
                 # formula
                 neighbor = src.item(i + x1, j + y1) * w1 + \
