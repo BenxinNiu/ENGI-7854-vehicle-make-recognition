@@ -3,6 +3,7 @@ from src.PatternBuilder import PatternBuilder
 from src.Classifier import  Classifier
 import src.LogoExtractor as extractor
 import os
+import sys
 
 where = os.path.dirname(os.path.realpath(__file__))
 
@@ -11,8 +12,8 @@ sourcePath = where + "/src/resources/logo_template"
 histogramPath = where + "/src/resources/lbph.dat"
 params = Params(1, 6, 4, 4)
 
-# TODO ::: make input image configurable. later...
-logo = extractor.logoExtraction(where+ "/src/resources/testImages/volkswagen1.jpg")
+identifyPic = sys.argv[1]
+logo = extractor.logoExtraction(where+ identifyPic)
 
 patternBuilder = PatternBuilder(params, logoDictionary, sourcePath, histogramPath)
 patternBuilder.buildAll()
