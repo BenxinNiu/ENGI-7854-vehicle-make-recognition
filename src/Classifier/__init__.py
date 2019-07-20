@@ -1,12 +1,7 @@
-from src.LocalBinaryPatternUtil.Params import Params
-import math
-import numpy as np
 import cv2
 import os
 import sys
 import src.LocalBinaryPatternUtil as Util
-from src.LocalBinaryPatternUtil.Params import Params
-from src.PatternBuilder.InterimResult import InterimResult
 import matplotlib.pyplot as plt
 
 
@@ -27,20 +22,22 @@ class Classifier:
                 minDiff = diff
                 guess = self.cache.index[idx]
                 print('label:%d distance:%f' % (guess, minDiff))
-        # return guess, minDiff, lbp, histogram
-        self.printGuess(guess, lbp, histogram)
+        # self.printGuess(guess, lbp, histogram)
+        return guess, minDiff, lbp, histogram
 
-    def printGuess(self, guess, sourceLBP, sourceHistogram):
+    def printGuess(self, guess, sourceLBP, sourceHistogram, path):
         copy = self.knownBrandList
         new_label = {v: k for k, v in copy.items()}
 
-        print('My Guess:' + new_label[guess])
+        print('Guess:' + new_label[guess])
 
         plt.figure()
-        plt.subplot(121)
-        plt.imshow(sourceLBP, 'gray')
-        plt.title('LBP')
-        plt.subplot(122)
+        # plt.subplot(121)
+        # plt.imshow(sourceLBP, 'gray')
+        #plt.title('LBP')
+        # plt.subplot(122)
         plt.plot(sourceHistogram.flatten())
         plt.title('LBPH')
+        plt.savefig(path+"lbph.png")
         plt.show()
+        return new_label[guess]
