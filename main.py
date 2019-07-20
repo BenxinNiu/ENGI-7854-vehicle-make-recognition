@@ -16,8 +16,10 @@ sourcePath = where + "/src/resources/logo_template"
 histogramPath = where + "/src/resources/lbph.dat"
 params = Params(1, 6, 4, 4)
 
-
-testPic = sys.argv[1]
+# TODO replace with testPic later ..
+# testPic = sys.argv[1]
+testPic = where + "/src/resources/testImages/highway_3.jpg"
+# TODO replace with testPic later ..
 logo = extractor.logoExtraction(testPic)
 
 cv2.imwrite(where + '/output/logo.jpg', logo)
