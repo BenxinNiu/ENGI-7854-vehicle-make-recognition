@@ -34,7 +34,7 @@ cv2.imwrite(where + '/output/lbp.jpg', lbp)
 guess = classifer.printGuess(guessIdx, lbp, histogram, where + "/output/")
 
 report_template = open(where + "/src/resources/report_template.html", mode='r')
-
+print("something")
 # Hacky way to generate report.
 # TODO use beautifulsoup, if time permits
 html = report_template.read()
@@ -45,7 +45,7 @@ html = html.replace('extracted_logo', where + '/output/logo.jpg')
 html = html.replace("source_img", testPic)
 # close the file
 report_template.close()
-
+print (html)
 report = open(where+"/output/report.html", "w")
 report.write(html)
 report.close()

@@ -39,5 +39,5 @@ class Classifier:
         plt.plot(sourceHistogram.flatten())
         plt.title('LBPH')
         plt.savefig(path+"lbph.png")
-        plt.show()
+        # plt.show()
         return new_label[guess]
