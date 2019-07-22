@@ -10,7 +10,8 @@ activate vritual environment
 run `python main.py`
 
 ## Technology
-* 
+* Local Binary Pattern
+
 
 # Disclaimer:
  This project is intended to serve as a partial requirement of ENGI-7854 course at Memorial Unversity.
