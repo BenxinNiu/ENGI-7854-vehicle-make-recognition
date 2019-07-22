@@ -1,12 +1,16 @@
 # ENGI-7854-vehicle-make-recognition
 
 ## Dev Setup
-run `pipenv install`
+activate virtual environment
+run `pip install -r requirements.txt`
 
 ## Running code
 
-run `pipenv run python main.py` or create virtual env `pipenv shell`
+activate vritual environment
+run `python main.py`
 
+## Technology
+* 
 
 # Disclaimer:
  This project is intended to serve as a partial requirement of ENGI-7854 course at Memorial Unversity.

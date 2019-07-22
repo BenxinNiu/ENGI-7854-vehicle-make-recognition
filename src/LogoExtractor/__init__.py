@@ -27,8 +27,6 @@ def process(img):
     dilation = cv2.dilate(sobel, element2, iterations = 1)
     erosion = cv2.erode(dilation, element1, iterations = 1)
     dilation2 = cv2.dilate(erosion, element2,iterations = 3)
-    #img=cv2.dilate(img,kernel,iterations = 1)
-    #img=cv2.Canny(img,100,200)
     return dilation2
 
 def plateDetect(img,img2):
@@ -44,7 +42,6 @@ def plateDetect(img,img2):
             logo_x2=x+w
             img_logo=img2.copy()
             logo=img_logo[logo_y1:logo_y2,logo_x1:logo_x2]
-            cv2.imwrite('./logo1.jpg',logo)
             cv2.rectangle(img2,(x,y),(x+w,y+h),(255,0,0),2)
             cv2.rectangle(img2,(logo_x1,logo_y1),(logo_x2,logo_y2),(0,255,0),2)
             global plate
