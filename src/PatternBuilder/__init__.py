@@ -4,7 +4,6 @@ import numpy as np
 import cv2
 import os
 import src.LocalBinaryPatternUtil as Util
-from src.LocalBinaryPatternUtil.Params import Params
 from src.PatternBuilder.InterimResult import InterimResult
 
 
@@ -40,7 +39,7 @@ class PatternBuilder:
         print("building for {}\n".format(logoPath))
         for file in os.listdir(logoPath):
             sourceImg = "{}/{}".format(logoPath, file)
-            histogram, lbp = Util.computeLBPHistogram(sourceImg, self.params)
+            histogram, lbp = Util.computeLBPHistogram(cv2.imread(sourceImg), self.params)
             histogram_list.append(histogram)
         self.cache.histogram.append(np.mean(histogram_list, axis=0))
         print("finished building for {}\n \n".format(logoPath))
