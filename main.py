@@ -1,6 +1,8 @@
 import sys
 import os
 import webbrowser
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 
 from src.LocalBinaryPatternUtil.Params import Params
 from src.PatternBuilder import PatternBuilder
@@ -17,9 +19,14 @@ histogramPath = where + "/src/resources/lbph.dat"
 params = Params(1, 6, 4, 4)
 
 # TODO replace with testPic later ..
-# testPic = sys.argv[1]
-testPic = where + "/src/resources/testImages/highway_3.jpg"
-# TODO replace with testPic later ..
+testPic = sys.argv[1]
+testPic = where + "/src/resources/testImages/highway_8.jpg" 
+
+# processed pic
+img = cv2.imread(testPic)
+hsv = extractor.HSVfilter(img)
+
+#cv2.imwrite(where + '/output/logo.processed', processed)
 logo = extractor.logoExtraction(testPic)
 
 cv2.imwrite(where + '/output/logo.jpg', logo)
@@ -45,11 +52,7 @@ html = html.replace('extracted_logo', where + '/output/logo.jpg')
 html = html.replace("source_img", testPic)
 # close the file
 report_template.close()
-print (html)
 report = open(where+"/output/report.html", "w")
 report.write(html)
 report.close()
-
-print (html)
-
 webbrowser.open('file://' + os.path.realpath(where+"/output/report.html"))

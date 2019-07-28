@@ -4,9 +4,7 @@ import sys
 import src.LocalBinaryPatternUtil as Util
 import matplotlib.pyplot as plt
 
-
 class Classifier:
-
     def __init__(self, cache, params, knownBrandList):
         self.cache = cache
         self.params = params
@@ -22,22 +20,14 @@ class Classifier:
                 minDiff = diff
                 guess = self.cache.index[idx]
                 print('label:%d distance:%f' % (guess, minDiff))
-        # self.printGuess(guess, lbp, histogram)
         return guess, minDiff, lbp, histogram
 
     def printGuess(self, guess, sourceLBP, sourceHistogram, path):
         copy = self.knownBrandList
         new_label = {v: k for k, v in copy.items()}
-
         print('Guess:' + new_label[guess])
-
         plt.figure()
-        # plt.subplot(121)
-        # plt.imshow(sourceLBP, 'gray')
-        #plt.title('LBP')
-        # plt.subplot(122)
         plt.plot(sourceHistogram.flatten())
         plt.title('LBPH')
         plt.savefig(path+"lbph.png")
-        # plt.show()
         return new_label[guess]
