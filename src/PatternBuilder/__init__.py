@@ -15,24 +15,22 @@ class PatternBuilder:
         self.cache = InterimResult([], [], histogramPath)
         self.params = params
 
-    def preprocessImg(self, file):
-        try:
-            return cv2.resize(cv2.imread(file), (48, 48))
-        except OSError:
-            print("\n Error occurred during pre-processing logo: {} \n".format(file))
-
-    def buildAll(self):
+    def buildAll(self, saveCache=False):
         if self.cache.loadHistogramData():
             return
         print("start building local binary patterns \n"),
-        for subDir in os.listdir(self.sourcePath):
-            logoPath = os.path.join(self.sourcePath, subDir)
+        for brand in self.knownBrandList:
+            logoPath = os.path.join(self.sourcePath, brand)
             if os.path.isdir(logoPath):
                 # keep track of the id for each car brand
-                self.cache.index.append(self.knownBrandList[subDir])
+                self.cache.brand.append(brand)
                 self.buildFromLogoFiles(logoPath)
-        print("finished building LBP.. Saving it to file: {}\n".format(self.cache.cacheSource))
-        self.cache.saveHistogramData()
+            else:
+                print("Unable to find training data for {}, Skipping it \n".format(brand))
+                print("Finished Building... To save the traning data, pass true to buildAll method")
+        if saveCache:
+            self.cache.saveHistogramData()
+            print("finished building LBP.. Saving it to file: {}\n".format(self.cache.cacheSource))
 
     def buildFromLogoFiles(self, logoPath):
         histogram_list = []
