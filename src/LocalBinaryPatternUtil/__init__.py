@@ -49,7 +49,8 @@ def computeLocalBinaryPattern(src, radius, neighbors):
             for j in range(radius, img.shape[1] - radius):
                 # formula
                 neighbor = img[i + fx][j + cx] * w1 + img[i + fx][j + cy] * w2 + img[i + fy][j + cx] * w3 + img[i + fy][j + cy] * w4
-                dst[i - radius][j - radius] = neighbor > img[i][j]
+                # dst[i - radius][j - radius] = neighbor > img[i][j]
+                dst[i - radius][j - radius] |= (neighbor > img[i][j]) << (neighbors - n - 1)
     return dst
 
 def computeHistogram(lbp):
