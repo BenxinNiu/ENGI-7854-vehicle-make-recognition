@@ -20,12 +20,13 @@ params = Params(1, 6, 4, 4)
 testPic = sys.argv[1]
 
 
-extractor = LogoExtractor(testPic)
-logo = extractor.getLogo()
-cv2.imwrite(where + '/output/logo.jpg', logo)
 
 patternBuilder = PatternBuilder(params, trainedLogoSet, sourcePath, histogramPath)
 patternBuilder.buildAll(saveCache=True)
+
+extractor = LogoExtractor(testPic)
+logo = extractor.getLogo()
+cv2.imwrite(where + '/output/logo.jpg', logo)
 
 classifer = Classifier(patternBuilder.cache, params, trainedLogoSet)
 guess, lbp = classifer.guessLogo(logo)
