@@ -16,14 +16,12 @@ sourcePath = where + "/src/resources/logo_template"
 histogramPath = where + "/src/resources/lbph.dat"
 params = Params(1, 6, 4, 4)
 
-# TODO replace with testPic later ..
-# testPic = sys.argv[1]
-testPic = where + "/src/resources/testImages/highway_5.jpg"
-# testPic = where + "/src/resources/testImages/10.png"
+
+testPic = sys.argv[1]
+
 
 extractor = LogoExtractor(testPic)
 logo = extractor.getLogo()
-
 cv2.imwrite(where + '/output/logo.jpg', logo)
 
 patternBuilder = PatternBuilder(params, trainedLogoSet, sourcePath, histogramPath)
